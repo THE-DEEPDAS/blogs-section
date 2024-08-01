@@ -2,8 +2,9 @@ body, html {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
-    color: var(--color);
+    background-color: #121212;
+    color: #ffffff  
+    transparent;                                                                
 }
 
 body:not(.darktheme){
@@ -114,7 +115,7 @@ body:not(.darktheme){
 }
 
 .sidebar {
-    background: var(--background-color);
+    background: #121212;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -177,7 +178,7 @@ body.darktheme .btn-primary:hover {
 .full-blog-container {
     max-width: 800px; /* Limit content width */
     padding: 20px;
-    background-color: var(--background-color);/* White background*/
+    background-color: #121212;/* White background*/
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
     border-radius: 10px; /* Rounded corners */
    
