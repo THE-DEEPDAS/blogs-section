@@ -78,18 +78,19 @@
                         <li><a href="blog5.html">5 Rules to Improve Your Financial Health</a></li>
                     </ul>
                     <h3>Subscribe to Our Newsletter</h3>
-                    <form id="newsletterForm">
+                    <form id="newsletterForm" method="POST" action="https://formspree.io/f/mvgpavjv">
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            <input type="email" name="_replyto" class="form-control" id="email" placeholder="Enter your email" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+                        <div id="responseMessage"></div> <!-- Added div for the response message -->
                     </form>
                 </div>
             </div>
         </div>
 
         <!-- Interactive Features Section -->
-        <h3>Suggest a Topic</h3>
+        <h3 id="suggestion">Suggest a Topic</h3>
         <form id="topicSuggestionForm">
             <div class="form-group">
                 <input type="text" class="form-control" id="topic" name="topic" placeholder="Enter your suggested topic">
@@ -103,18 +104,53 @@
             <ul id="suggestionsList">
                 <!-- Suggested topics will be populated here -->
             </ul>
-           
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="mt-4 text-center">
-        <p>&copy; 2024 Financial Blog. All rights reserved.</p>
-    </footer>
+  
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="scripts.js"></script>
+    <script>
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+            const responseMessage = document.getElementById('responseMessage');
+
+            if (validateEmail(email)) {
+                // Email is valid, submit the form
+                fetch('https://formspree.io/f/mvgpavjv', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ _replyto: email })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        emailInput.value = ''; // Clear the input field
+                        responseMessage.innerHTML = '<div style="color: white">Thank you for subscribing!</div>';
+                    } else {
+                        responseMessage.innerHTML = '<div class="alert alert-danger" style="color: white">There was an error. Please try again.</div>';
+                    }
+                })
+                .catch(error => {
+                    responseMessage.innerHTML = '<div class="alert alert-danger" style="color: white">There was an error. Please try again.</div>';
+                });
+            } else {
+                responseMessage.innerHTML = '<div class="alert alert-danger" style="color: white">Please enter a valid email address.</div>';
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
 </body>
 </html>
