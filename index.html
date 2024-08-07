@@ -136,7 +136,7 @@
         .then(response => {
             if (response.ok) {
                 emailInput.value = ''; // Clear the input field
-                responseMessage.innerHTML = '<div class="alert alert-success" style ="color: white" >Thank you for subscribing!</div>';
+                responseMessage.innerHTML = '<div style ="color: white" >Thank you for subscribing!</div>';
             } else {
                 responseMessage.innerHTML = '<div class="alert alert-danger" style = "color : white">There was an error. Please try again.</div>';
             }
