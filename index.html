@@ -116,5 +116,40 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="scripts.js"></script>
+    <script>
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+            const responseMessage = document.getElementById('responseMessage');
+
+            if (validateEmail(email)) {
+                // Email is valid, submit the form
+                fetch('https://formspree.io/f/mvgpavjv', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ _replyto: email })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    emailInput.value = ''; // Clear the input field
+                    responseMessage.innerHTML = '<div class="alert alert-success">Thank you for subscribing!</div>';
+                })
+                .catch(error => {
+                    responseMessage.innerHTML = '<div class="alert alert-danger">There was an error. Please try again.</div>';
+                });
+            } else {
+                responseMessage.innerHTML = '<div class="alert alert-danger">Please enter a valid email address.</div>';
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
 </body>
 </html>
