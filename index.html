@@ -78,11 +78,12 @@
                         <li><a href="blog5.html">5 Rules to Improve Your Financial Health</a></li>
                     </ul>
                     <h3>Subscribe to Our Newsletter</h3>
-                    <form id="newsletterForm" method = "POST" action="https://formspree.io/f/mvgpavjv">
+                    <form id="newsletterForm" method="POST" action="https://formspree.io/f/mvgpavjv">
                         <div class="form-group">
                             <input type="email" name="_replyto" class="form-control" id="email" placeholder="Enter your email" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+                        <div id="responseMessage"></div> <!-- Added div for the response message -->
                     </form>
                 </div>
             </div>
@@ -103,7 +104,6 @@
             <ul id="suggestionsList">
                 <!-- Suggested topics will be populated here -->
             </ul>
-           
         </div>
     </div>
 
@@ -118,42 +118,41 @@
     <script src="scripts.js"></script>
     <script>
         document.getElementById('newsletterForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
+            event.preventDefault(); // Prevent default form submission
 
-    const emailInput = document.getElementById('email');
-    const email = emailInput.value.trim();
-    const responseMessage = document.getElementById('responseMessage');
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value.trim();
+            const responseMessage = document.getElementById('responseMessage');
 
-    if (validateEmail(email)) {
-        // Email is valid, submit the form
-        fetch('https://formspree.io/f/mvgpavjv', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ _replyto: email })
-        })
-        .then(response => {
-            if (response.ok) {
-                emailInput.value = ''; // Clear the input field
-                responseMessage.innerHTML = '<div style ="color: white" >Thank you for subscribing!</div>';
+            if (validateEmail(email)) {
+                // Email is valid, submit the form
+                fetch('https://formspree.io/f/mvgpavjv', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ _replyto: email })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        emailInput.value = ''; // Clear the input field
+                        responseMessage.innerHTML = '<div style="color: white">Thank you for subscribing!</div>';
+                    } else {
+                        responseMessage.innerHTML = '<div class="alert alert-danger" style="color: white">There was an error. Please try again.</div>';
+                    }
+                })
+                .catch(error => {
+                    responseMessage.innerHTML = '<div class="alert alert-danger" style="color: white">There was an error. Please try again.</div>';
+                });
             } else {
-                responseMessage.innerHTML = '<div class="alert alert-danger" style = "color : white">There was an error. Please try again.</div>';
+                responseMessage.innerHTML = '<div class="alert alert-danger" style="color: white">Please enter a valid email address.</div>';
             }
-        })
-        .catch(error => {
-            responseMessage.innerHTML = '<div class="alert alert-danger" style = "color : white">There was an error. Please try again.</div>';
         });
-    } else {
-        responseMessage.innerHTML = '<div class="alert alert-danger" style = "color : white">Please enter a valid email address.</div>';
-    }
-});
 
-function validateEmail(email) {
-    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return re.test(String(email).toLowerCase());
-}
-
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(String(email).toLowerCase());
+        }
     </script>
 </body>
 </html>
