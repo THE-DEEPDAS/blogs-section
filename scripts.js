@@ -98,6 +98,7 @@ function displaySuggestedTopics() {
     topics.forEach(topic => {
         const listItem = document.createElement('li');
         listItem.textContent = topic;
+        listItem.style.color = 'white'; // Set the font color to white
         topicsList.appendChild(listItem);
     });
 }
