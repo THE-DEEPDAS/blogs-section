@@ -125,3 +125,23 @@ document.getElementById('switchToLogin').addEventListener('click', (e) => {
     document.getElementById('email').value = '';
     document.getElementById('password').value = '';
 });
+
+
+
+
+// to handle the download
+document.getElementById("download-notes").addEventListener("click", function() {
+    const notes = document.getElementById("noteContent").value;
+    const blob = new Blob([notes], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "notes.txt"; // The name of the file to be downloaded
+    document.body.appendChild(a);
+    a.click();
+
+    // Cleanup
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+});

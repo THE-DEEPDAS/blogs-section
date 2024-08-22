@@ -48,17 +48,71 @@ body:not(.darktheme){
     max-width: 1200px;
     margin: auto;
     padding: 20px;
+    
 }
 
-.navbar-brand {
-    font-size: 24px;
+/* Navbar */
+.navbar {
+    background-color: rgba(6, 10, 14, 0); /* Slightly Transparent Dark Blue */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding-top: 0px;
+   
+  }
+  #nav-container{
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .navbar-brand {
+    color: #ecf0f1; /* White */
+  }
+  
+  .navbar-brand:hover {
+    color: #3498db; /* Bright Blue */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #ecf0f1; /* White */
     font-weight: bold;
-}
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #5dade2; /* Light Blue */
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.5); /* Slight Glow Effect */
+  }
+  
+  .navbar-nav .nav-link:active {
+    color: #ffffff; /* Bright White */
+  }
+  
+  /* Dropdown Menu */
+  .navbar-nav .dropdown-menu {
+    background-color: #22313f; /* Darker Blue */
+    border: 1px solid #3498db; /* Bright Blue Border */
+    
+  }
+  
+  .navbar-nav .dropdown-item {
+    color: #ecf0f1; /* White */
+  }
+
+  .navbar-toggler-icon{
+    color : white;
+    visibility: visible;
+    stroke: white;
+    background-size : 100% 100%;
+  }
+  
+  .navbar-nav .dropdown-item:hover {
+    background-color: #34495e; /* Slightly Lighter Dark Blue */
+    color: #ffffff; /* Bright White */
+  }
+  
 
 .slider {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    margin-top: 1em;
 }
 
 .blog-post {
@@ -159,7 +213,7 @@ body:not(.darktheme){
 }
 
 body.darktheme .sidebar ul li a {
-    color: #80bfff;
+    color: #bbdaf7;
 }
 
 .footer {
@@ -179,14 +233,48 @@ body.darktheme .navbar, body.darktheme .footer {
     color: #fff;
 }
 
-body.darktheme .btn-primary {
+body.darktheme  {
     background-color: #007bff;
     border-color: #007bff;
 }
 
-body.darktheme .btn-primary:hover {
+body.darktheme  {
     background-color: #0056b3;
     border-color: #004085;
+}
+
+/* From Uiverse.io by niat786 */ 
+.submit-button ,.subscribe-button{
+  border-radius: .25rem;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: #fff;
+  -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+  clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+  height: 40px;
+  font-size: 0.7rem;
+  line-height: 14px;
+  letter-spacing: 1.2px;
+  transition: .2s .1s;
+  background-image: linear-gradient(90deg,#1c1c1c,#6220fb);
+  border: 0 solid;
+  overflow: hidden;
+}
+
+.submit-button:hover ,.subscribe-button:hover{
+  cursor: pointer;
+  transition: all .3s ease-in;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+.submit-button{
+  width: 15em;
+}
+.submit-button:hover {
+  width: 16em;
 }
 .full-blog-container {
     max-width: 800px; /* Limit content width */
@@ -222,7 +310,9 @@ body.darktheme .btn-primary:hover {
   ul {
     margin-top: 10px; /* Top margin for unordered lists */
   }
-  
+  .suggestions-list h3{
+    color: white;
+  }
   /* Footer styles */
   footer {
     background-color: #007bff; /* Bootstrap primary color */

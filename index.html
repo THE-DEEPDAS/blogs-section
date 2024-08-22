@@ -8,9 +8,50 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#" >Financial Blog</a>
+    <nav class="navbar navbar-expand-lg  sticky-top black" id="nav-container">
+        <div class="container">
+            
+            <a class="navbar-brand" href="#" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight:bolder; color: rgb(172, 167, 162);">Financial Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 80px;">
+                <span class="navbar-toggler-icon" style="padding: 0px; color: white; opacity: 1;"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav" >
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://capify.vercel.app/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://group-finance-manager.vercel.app/login">SplitSmart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://calculators-pied.vercel.app/">Calculators</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Trackers
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://balance-tracker-ashy.vercel.app/">Balance Tracker</a>
+                            <a class="dropdown-item" href="https://budget-tracker-k8yo.vercel.app/">Budget Tracker</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://financial-health-quiz.vercel.app/">Financial Health Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://blogs-section-three.vercel.app/">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://resources-section.vercel.app/">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://capify.vercel.app/#about">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
+    
     
     <div class="container mt-4">
         <div class="row">
@@ -61,7 +102,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="sidebar">
+                <div class="sidebar" >
                     <h3>Useful Links</h3>
                     <ul>
                         <li><a href="https://www.investopedia.com">Investopedia</a></li>
@@ -82,7 +123,7 @@
                         <div class="form-group">
                             <input type="email" name="_replyto" class="form-control" id="email" placeholder="Enter your email" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+                        <button type="submit" class="subscribe-button" >Subscribe</button>
                         <div id="responseMessage"></div> <!-- Added div for the response message -->
                     </form>
                 </div>
@@ -96,7 +137,7 @@
                 <input type="text" class="form-control" id="topic" name="topic" placeholder="Enter your suggested topic">
                 <small id="topicError" class="error"></small>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" class="submit-button">Submit</button>
             <p id="feedbackMessage" class="success"></p>
         </form>
         <div class="suggestions-list">
