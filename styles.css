@@ -50,8 +50,8 @@ body:not(.darktheme){
     padding: 20px;
     
 }
-
-/* Navbar */
+/* 
+Navbar
 .navbar {
     background-color: rgba(6, 10, 14, 0.6); /* Slightly Transparent Dark Blue */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -97,7 +97,7 @@ body:not(.darktheme){
     background-color: #34495e; /* Slightly Lighter Dark Blue */
     color: #ffffff; /* Bright White */
   }
-  
+   */
 
 .slider {
     display: flex;
